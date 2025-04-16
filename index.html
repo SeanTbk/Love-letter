@@ -1,101 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>To My Love</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Love Letter</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #fff0f5;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       color: #333;
       text-align: center;
-      padding: 2rem;
+      padding-top: 20px;
     }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    .message {
+      font-size: 2rem;
+      margin-top: 20px;
     }
-
-    h1 {
-      color: #ff4b91;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .gallery {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .gallery img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    audio {
-      margin-top: 2rem;
-      width: 100%;
-    }
-
     .locked {
       font-size: 1.5rem;
-      font-weight: bold;
-      color: #999;
+      color: #ff6b6b;
+    }
+    .unlocked {
+      font-size: 1.5rem;
+      color: #4caf50;
+    }
+    img {
+      max-width: 80%;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+    audio {
+      margin-top: 30px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <div id="content" style="display: none;">
-      <h1>To My Love</h1>
-      <p>
-        I really love you a lot, and I believe we can grow together and share loving memories together.
-        I hope we build a strong future for our relationship. Although I’m a nonchalant person,
-        I really try to express my emotions to you — I really do.
-        But I’ll always love and care for you, and I hope you know that.
-        I might have gotten comfortable and don’t flirt as much anymore,
-        but that doesn’t change the fact that I love you.
-        You’re reading this after a long wait, but I promise to make it worth it. It has to be. ❤️
-      </p>
-
-      <div class="gallery">
-        <img src="https://i.imgur.com/q8x5gjd.jpg" alt="Us 1" />
-        <img src="https://i.imgur.com/Trs7E4v.jpg" alt="Us 2" />
-        <img src="https://i.imgur.com/8o6FeC2.jpg" alt="Us 3" />
-      </div>
-
-      <audio controls>
-        <source src="https://audio.jukehost.co.uk/Ocyw83wUI0tYsmFt9x1kiHjB8L4W0qL1" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-
-    <div id="locked" class="locked">Wait until May 13, 2025!</div>
-  </div>
-
+  <h1>My Love Letter 💌</h1>
+  <div id="content"></div>
+  <audio id="song" controls>
+    <source src="https://www.example.com/fall-in-love-with-you.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
   <script>
-    const unlockDate = new Date("April 17, 2025 00:00:00"); // ← Set to today
+    // Unlock date - May 13, 2025
+    const unlockDate = new Date("May 13, 2025 00:00:00");
     const now = new Date();
 
-    if (now >= unlockDate) {
-      document.getElementById("content").style.display = "block";
-      document.getElementById("locked").style.display = "none";
+    // Unlocking the love letter on the specified date
+    const contentDiv = document.getElementById("content");
+    const song = document.getElementById("song");
+
+    if (now < unlockDate) {
+      contentDiv.innerHTML = `
+        <div class="locked">
+          <p>This love letter unlocks on May 13, 2025 💌</p>
+          <p>Come back then, my love!</p>
+        </div>
+      `;
+    } else {
+      contentDiv.innerHTML = `
+        <div class="unlocked">
+          <p>My Dearest,</p>
+          <p>I really love you a lot, and I believe we can grow together and share countless loving memories. I hope we build a strong future for our relationship. Though I'm a nonchalant person, I always try to express my emotions to you — I truly do. I want you to know that I will always love and care for you, and I hope you know that.</p>
+          <p>Maybe I’ve gotten comfortable and don’t flirt as much as I used to, but that doesn’t change the fact that I love you deeply. You will be reading this after a long wait, but it’s worth it. I promise to make it work — it has to be.</p>
+          <p>With all my love, always,</p>
+          <p>Your Shaun 💖</p>
+        </div>
+        <img src="https://i.imgur.com/1dyHjGH.jpg" alt="Photo 1">
+        <img src="https://i.imgur.com/F6aHVAN.jpg" alt="Photo 2">
+        <audio autoplay>
+          <source src="https://www.example.com/fall-in-love-with-you.mp3" type="audio/mp3">
+        </audio>
+      `;
+      song.play();  // Auto-play the song once unlocked
     }
   </script>
 </body>
